@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.gizahackathon.utilitiesapp.R
+import com.gizahackathon.utilitiesapp.ui.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 
