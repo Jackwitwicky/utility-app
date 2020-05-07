@@ -46,6 +46,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.archLifecycleVersion"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
+    // Room components
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
     // additional libraries
     implementation 'com.jakewharton.timber:timber:4.7.1'
 }
