@@ -1,19 +1,29 @@
 package com.gizahackathon.utilitiesapp.ui.addbill
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gizahackathon.utilitiesapp.domain.UtilityCategory
+import com.gizahackathon.utilitiesapp.repository.UtilityCategoryRepository
 import kotlinx.coroutines.launch
 
-class AddBillViewModel(application: Application) : AndroidViewModel(application) {
+class AddBillViewModel(private val utilityCategoryRepository: UtilityCategoryRepository) :
+    ViewModel() {
 
-    var utilityName = MutableLiveData<String>()
 
-    fun getUtilityName() {
+    private val _utilityId = MutableLiveData<Long>()
+
+    fun setUtilityId(internalId: Long) {
+        _utilityId.value = internalId
+    }
+
+    fun saveUtility(utilityName: String) {
         viewModelScope.launch {
-//            userRepository.getUserData(userDataRequest, {i -> userResponse.value = i})
-            utilityName = MutableLiveData("Prepaid");
+            val utilityCategory = UtilityCategory(
+                utilityName = utilityName
+            )
+            utilityCategoryRepository.save(utilityCategory)
         }
+
     }
 }
