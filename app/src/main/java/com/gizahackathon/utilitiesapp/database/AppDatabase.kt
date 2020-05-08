@@ -15,4 +15,5 @@ import com.gizahackathon.utilitiesapp.domain.*
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun utilityCategoryDao(): UtilityCategoryDao
+    abstract fun utilityAccountDao(): UtilityAccountDao
 }

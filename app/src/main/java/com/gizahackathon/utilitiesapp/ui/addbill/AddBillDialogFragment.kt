@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.gizahackathon.utilitiesapp.R
 import dagger.android.support.AndroidSupportInjection
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -40,8 +42,12 @@ class AddBillDialogFragment : DialogFragment() {
         super.onActivityCreated(savedInstanceState)
         addBillViewModel =
             ViewModelProvider(this, addBillViewModelFactory).get(AddBillViewModel::class.java)
-        addBillViewModel.saveUtility("PAYBILL")
-        addBillViewModel.setUtilityId(1L)
+//        addBillViewModel.saveUtility("PAYBILL")
+//        addBillViewModel.setUtilityId(1L)
 
+        addBillViewModel.getUtilityCategories()
+        addBillViewModel.utilityCategories.observe(viewLifecycleOwner, Observer { utilityCategories ->
+            Timber.d("The categories are: $utilityCategories")
+        })
     }
 }
