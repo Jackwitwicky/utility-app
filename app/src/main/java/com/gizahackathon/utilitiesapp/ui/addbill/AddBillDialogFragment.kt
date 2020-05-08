@@ -1,8 +1,6 @@
-package com.gizahackathon.utilitiesapp.ui.addutility
+package com.gizahackathon.utilitiesapp.ui.addbill
 
-import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +15,9 @@ import timber.log.Timber
 /**
  * A simple [Fragment] subclass.
  */
-class AddUtilityDialogFragment : DialogFragment() {
+class AddBillDialogFragment : DialogFragment() {
 
-    private lateinit var addUtilityViewModel : AddUtilityViewModel
+    private lateinit var addBillViewModel : AddBillViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,14 +25,14 @@ class AddUtilityDialogFragment : DialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         setupViewModel()
-        return inflater.inflate(R.layout.fragment_add_utility_dialog, container, false)
+        return inflater.inflate(R.layout.fragment_add_bill_dialog, container, false)
     }
 
     private fun setupViewModel() {
-        val factory = AddUtilityViewModelFactory(activity!!.application)
-        addUtilityViewModel = ViewModelProviders.of(this, factory).get(AddUtilityViewModel::class.java)
-        addUtilityViewModel.getUtilityName()
-        addUtilityViewModel.utilityName.observe(viewLifecycleOwner, Observer<String>{ utilityName ->
+        val factory = AddBillViewModelFactory(activity!!.application)
+        addBillViewModel = ViewModelProviders.of(this, factory).get(AddBillViewModel::class.java)
+        addBillViewModel.getUtilityName()
+        addBillViewModel.utilityName.observe(viewLifecycleOwner, Observer<String>{ utilityName ->
             // update UI
             Timber.d("The utility name is: $utilityName")
         })

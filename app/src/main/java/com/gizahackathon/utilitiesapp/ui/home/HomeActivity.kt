@@ -3,7 +3,7 @@ package com.gizahackathon.utilitiesapp.ui.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.gizahackathon.utilitiesapp.R
-import com.gizahackathon.utilitiesapp.ui.addutility.AddUtilityDialogFragment
+import com.gizahackathon.utilitiesapp.ui.addbill.AddBillDialogFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -14,7 +14,7 @@ class HomeActivity : AppCompatActivity() {
 
         add_kplc_button.setOnClickListener {
             val addUtilityDialogFragment =
-                AddUtilityDialogFragment()
+                AddBillDialogFragment()
             addUtilityDialogFragment.show(supportFragmentManager, "add_utility")
         }
     }
