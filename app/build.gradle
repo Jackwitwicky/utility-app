@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.gizahackathon.utilitiesapp"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -67,4 +67,5 @@ dependencies {
 
     // additional libraries
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.hover:android-sdk:1.5.1'
 }
