@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gizahackathon.utilitiesapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".UtilityApp"
         android:allowBackup="true"
@@ -10,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.HomeActivity"></activity>
+        <activity android:name=".ui.addbill.AddBillActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -20,6 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.hover.ApiKey"
+            android:value="65e1015898a473b4fb9bfc0651483870"/>
     </application>
 
 </manifest>

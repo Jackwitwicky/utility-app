@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.addbill.AddBillDialogFragment">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.addbill.AddBillDialogFragment"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/add_bill_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_bill_title"
+        android:textColor="@color/colorPrimary"
+        android:layout_centerHorizontal="true"/>
 
-</FrameLayout>
+    <Spinner
+        android:id="@+id/add_bill_company_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/company_options"
+        android:layout_below="@id/add_bill_title"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/add_bill_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_bill_company_spinner"
+        android:layout_marginTop="20dp"
+        android:hint="@string/add_bill_name"
+        style="@style/editTextDrawableTheme"/>
+
+
+    <TextView
+        android:id="@+id/add_bill_payment_type_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_bill_name"
+        android:layout_marginTop="20dp"
+        android:text="@string/add_bill_payment_prompt"/>
+    <RadioGroup
+        android:id="@+id/add_bill_payment_type_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/add_bill_payment_type_prompt">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_bill_fixed_payment_option"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_bill_variabled_payment_option"
+            android:layout_marginLeft="16dp"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/add_bill_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_bill_payment_type_radio_group"
+        android:layout_marginTop="20dp"
+        android:hint="@string/add_bill_bill_amount"
+        style="@style/editTextDrawableTheme"
+        android:layout_marginLeft="16dp"
+        />
+
+    <Button
+        android:id="@+id/add_bill_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_bill_save_button"
+        app:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/add_bill_amount"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentRight="true"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_bill_cancel_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_bill_cancel_button"
+        android:textColor="@color/colorAccent"
+        android:textSize="15sp"
+        app:backgroundTint="@android:color/transparent"
+        app:strokeColor="@color/colorAccent"
+        app:strokeWidth="2dp"
+        android:layout_below="@id/add_bill_amount"
+        android:layout_marginTop="40dp"/>
+
+</RelativeLayout>

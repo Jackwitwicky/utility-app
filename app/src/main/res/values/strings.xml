@@ -1,6 +1,26 @@
 <resources>
-    <string name="app_name">Utilities App</string>
+    <string name="app_name">Bills</string>
+    <string name="currency">KSH</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Splash Screen-->
+    <string name="splash_app_name">BILLS</string>
+    <string name="splash_intro">MANAGE YOUR BILLS</string>
+    <string name="splash_logo_content_description">bill app logo</string>
+
+    <!--    home activity-->
+    <string name="home_monthly_payment_prompt">YOUR PAID BILLS FOR THIS MONTH</string>
+    <string name="home_monthly_payment_bill">KSH 4000</string>
+
+    <!--    Add Bill Dialog-->
+    <string name="add_bill_title">ADD BILL</string>
+    <string name="add_bill_name">Name e.g. Home Bill</string>
+    <string name="add_bill_payment_prompt">Does this bill have a fixed payment amount?</string>
+    <string name="add_bill_fixed_payment_option">yes</string>
+    <string name="add_bill_variabled_payment_option">no</string>
+    <string name="add_bill_bill_amount">AMOUNT</string>
+    <string name="add_bill_cancel_button">Cancel</string>
+    <string name="add_bill_save_button">Save</string>
 </resources>

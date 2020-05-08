@@ -1,5 +1,6 @@
 package com.gizahackathon.utilitiesapp.injection
 
+import com.gizahackathon.utilitiesapp.ui.addbill.AddBillActivity
 import com.gizahackathon.utilitiesapp.ui.addbill.AddBillDialogFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -8,4 +9,7 @@ import dagger.android.ContributesAndroidInjector
 interface UtilityApplicationModule {
     @ContributesAndroidInjector
     fun contributeAddBillDialogFragmentInjector(): AddBillDialogFragment
+
+    @ContributesAndroidInjector
+    fun contributeAddBillActivityInjector(): AddBillActivity
 }

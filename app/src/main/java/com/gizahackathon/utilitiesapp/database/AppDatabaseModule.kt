@@ -2,6 +2,7 @@ package com.gizahackathon.utilitiesapp.database
 
 import android.content.Context
 import androidx.room.Room
+import com.gizahackathon.utilitiesapp.domain.UtilityCategory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -16,6 +17,7 @@ class AppDatabaseModule constructor(context: Context, test: Boolean = false) {
     } else {
         Room.databaseBuilder(context, AppDatabase::class.java, "utility_app_database")
             .fallbackToDestructiveMigration() // prevent app crash for missing old versions
+            .createFromAsset("databases/utility_app.db")
             .build()
         //When version changes upgrade it -.addMigrations(MIGRATION_VERSION)
     }
@@ -27,4 +29,8 @@ class AppDatabaseModule constructor(context: Context, test: Boolean = false) {
     @Provides
     @Singleton
     fun providesCategoryDao() = appDatabase.utilityCategoryDao()
+
+    @Provides
+    @Singleton
+    fun provideUtilityAccountDao() = appDatabase.utilityAccountDao()
 }
