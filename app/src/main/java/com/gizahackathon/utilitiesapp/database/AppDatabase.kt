@@ -16,4 +16,5 @@ import com.gizahackathon.utilitiesapp.domain.*
 abstract class AppDatabase : RoomDatabase() {
     abstract fun utilityCategoryDao(): UtilityCategoryDao
     abstract fun utilityAccountDao(): UtilityAccountDao
+    abstract fun utilityCompanyDao(): UtilityCompanyDao
 }

@@ -34,20 +34,6 @@ class AddBillActivity : AppCompatActivity() {
             var utilityAccount = UtilityAccount(0,1L, 1L, "My Bill", 5000L.toBigDecimal())
             addBillViewModel.saveUtilityAccount(utilityAccount)
         }
-
-        add_bill_cancel_button.setOnClickListener {
-//            Intent i = new HoverParameters.Builder(this)
-//                .request("action_id")
-//                .extra("step_variable_name”, variable_value_as_string) // Only if your action has variables
-//                    .buildIntent();
-
-            var intent = HoverParameters.Builder(this)
-                .request("e6784c9e")
-                .buildIntent()
-            startActivityForResult(intent, 0);
-        }
-
-        Hover.initialize(this);
     }
 
     private fun setupViewModel() {
@@ -56,32 +42,10 @@ class AddBillActivity : AppCompatActivity() {
         addBillViewModel.utilityAccountID.observe(this, Observer { utilityAccountID ->
             Timber.d("The account has been saved with the id of $utilityAccountID")
         })
-    }
 
-//    override public fun onActivityResult(
-//        requestCode: Int,
-//        resultCode: Int,
-//        data: Intent
-//    ) {
-//
-//        if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
-//            val sessionTextArr =
-//                data.getStringArrayExtra("session_messages")
-//            val uuid = data.getStringExtra("uuid")
-//        } else if (requestCode == 0 && resultCode == Activity.RESULT_CANCELED) {
-//            Toast.makeText(this, "Error: " + data.getStringExtra("error"), Toast.LENGTH_LONG).show()
-//        }
-//    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
-            val sessionTextArr =
-                data!!.getStringArrayExtra("session_messages")
-            val uuid = data.getStringExtra("uuid")
-        } else if (requestCode == 0 && resultCode == Activity.RESULT_CANCELED) {
-            Toast.makeText(this, "Error: " + data!!.getStringExtra("error"), Toast.LENGTH_LONG).show()
-        }
+        addBillViewModel.getUtilityCompanies()
+        addBillViewModel.utilityCompanies.observe(this, Observer { utilityCompanies ->
+            Timber.d("The companies are: $utilityCompanies")
+        })
     }
 }

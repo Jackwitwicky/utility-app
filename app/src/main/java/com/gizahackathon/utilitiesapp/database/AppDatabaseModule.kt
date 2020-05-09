@@ -33,4 +33,8 @@ class AppDatabaseModule constructor(context: Context, test: Boolean = false) {
     @Provides
     @Singleton
     fun provideUtilityAccountDao() = appDatabase.utilityAccountDao()
+
+    @Provides
+    @Singleton
+    fun provideUtilityCompanyDao() = appDatabase.utilityCompanyDao()
 }
