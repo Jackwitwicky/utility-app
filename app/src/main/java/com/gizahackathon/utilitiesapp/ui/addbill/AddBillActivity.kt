@@ -38,11 +38,9 @@ class AddBillActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.yes_selected -> {
                     binding.fixedAmount = false
-                    Toast.makeText(applicationContext, "Toast", Toast.LENGTH_LONG).show()
                 }
                 R.id.no_selected -> {
                     binding.fixedAmount = true
-                    Toast.makeText(applicationContext, "Toast", Toast.LENGTH_LONG).show()
                 }
             }
         }
