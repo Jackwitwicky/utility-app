@@ -2,9 +2,11 @@ package com.gizahackathon.utilitiesapp.ui.addbill
 
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.gizahackathon.utilitiesapp.R
 import com.gizahackathon.utilitiesapp.databinding.ActivityAddBillBinding
 import com.gizahackathon.utilitiesapp.extension.addTextChangedListener
 import com.gizahackathon.utilitiesapp.extension.setStringError
@@ -31,9 +33,20 @@ class AddBillActivity : AppCompatActivity() {
         binding.addBillSaveButton.setOnClickListener {
             addWaterBill()
         }
-
+        binding.addBillPaymentTypeRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            binding.fixedAmount = false
+            when (checkedId) {
+                R.id.yes_selected -> {
+                    binding.fixedAmount = false
+                    Toast.makeText(applicationContext, "Toast", Toast.LENGTH_LONG).show()
+                }
+                R.id.no_selected -> {
+                    binding.fixedAmount = true
+                    Toast.makeText(applicationContext, "Toast", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
         binding.addBill = addBillViewModel.addBill
-
         // clear errors after text change
         val textWatcher: (textView: TextView) -> Unit = { it.error = null }
         listOf(binding.addBillName, binding.addBillAmount)
