@@ -34,8 +34,6 @@ class AddBillActivity : AppCompatActivity() {
             var utilityAccount = UtilityAccount(0,1L, 1L, "My Bill", 5000L.toBigDecimal())
             addBillViewModel.saveUtilityAccount(utilityAccount)
         }
-
-        Hover.initialize(this);
     }
 
     private fun setupViewModel() {
@@ -43,6 +41,11 @@ class AddBillActivity : AppCompatActivity() {
             ViewModelProvider(this, addBillViewModelFactory).get(AddBillViewModel::class.java)
         addBillViewModel.utilityAccountID.observe(this, Observer { utilityAccountID ->
             Timber.d("The account has been saved with the id of $utilityAccountID")
+        })
+
+        addBillViewModel.getUtilityCompanies()
+        addBillViewModel.utilityCompanies.observe(this, Observer { utilityCompanies ->
+            Timber.d("The companies are: $utilityCompanies")
         })
     }
 }
