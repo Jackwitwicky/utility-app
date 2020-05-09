@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/item_bill_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/item_bill_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/item_bill_icon"
+        android:layout_marginStart="20dp"
+        android:text="KPLC"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="6dp"/>
+
+    <TextView
+        android:id="@+id/item_bill_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_bill_name"
+        android:layout_alignStart="@id/item_bill_name"
+        android:layout_marginTop="8dp"
+        android:text="KSH 2000"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/item_bill_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAY"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:layout_alignParentEnd="true"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"/>
+
+    <View
+        android:id="@+id/item_bill_divider"
+        android:layout_width="1dp"
+        android:layout_height="32dp"
+        android:background="@color/colorPrimary"
+        android:layout_toStartOf="@id/item_bill_pay"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="16dp"
+        />
+</RelativeLayout>
