@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gizahackathon.utilitiesapp.R
 import com.gizahackathon.utilitiesapp.domain.UtilityAccount
 import com.gizahackathon.utilitiesapp.domain.UtilityCategory
 import com.gizahackathon.utilitiesapp.domain.UtilityCompany
@@ -11,40 +12,55 @@ import com.gizahackathon.utilitiesapp.repository.UtilityAccountRepository
 import com.gizahackathon.utilitiesapp.repository.UtilityCategoryRepository
 import com.gizahackathon.utilitiesapp.repository.UtilityCompanyRepository
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
 
-class AddBillViewModel(private val utilityCategoryRepository: UtilityCategoryRepository,
-                       private val utilityAccountRepository: UtilityAccountRepository,
-                       private val utilityCompanyRepository: UtilityCompanyRepository) :
+class AddBillViewModel(
+    private val utilityCategoryRepository: UtilityCategoryRepository,
+    private val utilityAccountRepository: UtilityAccountRepository,
+    private val utilityCompanyRepository: UtilityCompanyRepository
+) :
     ViewModel() {
 
     var utilityAccountID = MutableLiveData<Long>()
-
-    private val _utilityId = MutableLiveData<Long>()
-    lateinit var utilityCategories :LiveData<List<UtilityCategory>>
-    var utilityCompanies : LiveData<List<UtilityCompany>>
+    lateinit var utilityCategories: LiveData<List<UtilityCategory>>
+    var utilityCompanies: LiveData<List<UtilityCompany>>
+    val addBill = AddBillModel()
 
     init {
         utilityCompanies = utilityCompanyRepository.getUtilityCompanies()
     }
 
-    fun saveUtilityAccount(utilityAccount: UtilityAccount) {
-        viewModelScope.launch {
-            utilityAccountID.value = utilityAccountRepository.save(utilityAccount)
+    fun validateFormAndSave(): ValidationResult {
+        val accountName = addBill.accountName.get()
+        val amount = addBill.accountAmount.get()
+        return if (accountName.isNullOrBlank()) {
+            ValidationResult(accountNameError = R.string.add_bill_account_name_require)
+        } else if (amount.isNullOrBlank()) {
+            ValidationResult(accountAmountError = R.string.add_bill_account_amount_require)
+        } else {
+            addBill(1L, 1L, accountName, amount.toBigDecimal())
+            ValidationResult(isDataValid = true)
         }
+
     }
 
-    fun setUtilityId(internalId: Long) {
-        _utilityId.value = internalId
-    }
-
-    fun saveUtility(utilityName: String) {
+    private fun addBill(
+        utilityCategoryId: Long,
+        utilityCompanyId: Long,
+        accountName: String,
+        amount: BigDecimal
+    ) {
         viewModelScope.launch {
-            val utilityCategory = UtilityCategory(
-                utilityName = utilityName
+            val utilityAccount = UtilityAccount(
+                utilityCategoryId = utilityCategoryId,
+                utilityCompanyId = utilityCompanyId,
+                accountName = accountName,
+                amount = amount
             )
-            utilityCategoryRepository.save(utilityCategory)
+            utilityAccountRepository.save(utilityAccount)
         }
     }
+
 
     fun getUtilityCategories() {
         viewModelScope.launch {
