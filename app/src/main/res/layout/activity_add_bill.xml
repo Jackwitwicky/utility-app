@@ -1,134 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addbill.AddBillActivity"
-    android:background="@color/colorPrimary">
-
+    android:background="@color/colorPrimary"
+    tools:context=".ui.addbill.AddBillActivity">
 
     <TextView
         android:id="@+id/home_monthly_payment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="ADD BILL"
-        android:textSize="24sp"
-        android:textColor="@color/colorTextLight"
-        android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
-
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/activity_add_bill"
+        android:textColor="@color/colorTextLight"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_white_line_logo"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/splash_logo_content_description"
-        android:layout_toLeftOf="@id/home_monthly_payment"
-        android:layout_marginRight="16dp"
-        android:layout_alignTop="@id/home_monthly_payment"/>
+        android:src="@drawable/ic_white_line_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/home_arch"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/home_arch"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:scaleType="fitEnd"
-        />
+        android:src="@drawable/home_arch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/add_bill_main_content"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/home_arch"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_background"/>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/add_bill_main_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/add_bill_main_content"
-        android:padding="16dp">
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_background"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline">
 
-        <Spinner
-            android:id="@+id/add_bill_company_spinner"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/company_options"
-            android:layout_marginTop="30dp"/>
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/add_bill_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/add_bill_company_spinner"
-            android:layout_marginTop="20dp"
-            android:hint="@string/add_bill_name"
-            style="@style/editTextDrawableTheme"/>
-
-
-        <TextView
-            android:id="@+id/add_bill_payment_type_prompt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/add_bill_name"
-            android:layout_marginTop="20dp"
-            android:text="@string/add_bill_payment_prompt"/>
-        <RadioGroup
-            android:id="@+id/add_bill_payment_type_radio_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/add_bill_payment_type_prompt">
-            <RadioButton
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_bill_fixed_payment_option"/>
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.05" />
 
-            <RadioButton
+            <Spinner
+                android:id="@+id/add_bill_company_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:entries="@array/company_options"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+            <EditText
+                android:id="@+id/add_bill_name"
+                style="@style/editTextDrawableTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/add_bill_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_bill_company_spinner" />
+
+            <TextView
+                android:id="@+id/add_bill_payment_type_prompt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/add_bill_payment_prompt"
+                app:layout_constraintEnd_toEndOf="@+id/add_bill_name"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/add_bill_name"
+                app:layout_constraintTop_toBottomOf="@+id/add_bill_name" />
+
+            <RadioGroup
+                android:id="@+id/add_bill_payment_type_radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_bill_variabled_payment_option"
-                android:layout_marginLeft="16dp"/>
-        </RadioGroup>
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/add_bill_payment_type_prompt"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/add_bill_payment_type_prompt"
+                app:layout_constraintTop_toBottomOf="@+id/add_bill_payment_type_prompt">
 
-        <EditText
-            android:id="@+id/add_bill_amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/add_bill_payment_type_radio_group"
-            android:layout_marginTop="20dp"
-            android:hint="@string/add_bill_bill_amount"
-            style="@style/editTextDrawableTheme"
-            android:layout_marginLeft="16dp"
-            />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_bill_fixed_payment_option" />
 
-        <Button
-            android:id="@+id/add_bill_save_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_bill_save_button"
-            app:backgroundTint="@color/colorAccent"
-            android:textColor="@android:color/white"
-            android:layout_below="@id/add_bill_amount"
-            android:layout_marginTop="40dp"
-            android:layout_alignParentRight="true"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="@string/add_bill_variabled_payment_option" />
+            </RadioGroup>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/add_bill_cancel_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_bill_cancel_button"
-            android:textColor="@color/colorAccent"
-            android:textSize="15sp"
-            app:backgroundTint="@android:color/transparent"
-            app:strokeColor="@color/colorAccent"
-            app:strokeWidth="2dp"
-            android:layout_below="@id/add_bill_amount"
-            android:layout_marginTop="40dp"/>
-    </RelativeLayout>
-</RelativeLayout>
+            <EditText
+                android:id="@+id/add_bill_amount"
+                style="@style/editTextDrawableTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/add_bill_bill_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_bill_payment_type_radio_group" />
+
+            <Button
+                android:id="@+id/add_bill_save_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/add_bill_save_button"
+                android:textColor="@android:color/white"
+                app:backgroundTint="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="@+id/add_bill_amount"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/add_bill_amount" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_bill_cancel_button"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/add_bill_cancel_button"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                app:backgroundTint="@android:color/transparent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_bill_amount"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

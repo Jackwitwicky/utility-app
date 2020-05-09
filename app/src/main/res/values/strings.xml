@@ -23,4 +23,5 @@
     <string name="add_bill_bill_amount">AMOUNT</string>
     <string name="add_bill_cancel_button">Cancel</string>
     <string name="add_bill_save_button">Save</string>
+    <string name="activity_add_bill">ADD YOUR BILL</string>
 </resources>
