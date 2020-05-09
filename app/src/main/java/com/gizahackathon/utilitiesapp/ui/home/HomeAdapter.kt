@@ -12,7 +12,7 @@ import com.gizahackathon.utilitiesapp.R
 import com.gizahackathon.utilitiesapp.domain.UtilityAccount
 import kotlinx.android.synthetic.main.item_home_bill.view.*
 
-class HomeAdapter(private val chatList: ArrayList<UtilityAccount>, private val context: Activity) : RecyclerView.Adapter<HomeAdapter.UtilityListHolder>() {
+class HomeAdapter(private var utilityAccountList: List<UtilityAccount>, private val context: Activity) : RecyclerView.Adapter<HomeAdapter.UtilityListHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UtilityListHolder {
         // create a new view
         val v = LayoutInflater.from(parent.context)
@@ -22,11 +22,16 @@ class HomeAdapter(private val chatList: ArrayList<UtilityAccount>, private val c
     }
 
     override fun getItemCount(): Int {
-        return chatList.size
+        return utilityAccountList.size
+    }
+
+    fun updateData(utilityAccounts: List<UtilityAccount>) {
+        this.utilityAccountList = utilityAccounts
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: UtilityListHolder, position: Int) {
-        val groupItem = chatList[position]
+        val groupItem = utilityAccountList[position]
         holder.bindGroup(groupItem)
     }
 
@@ -47,7 +52,7 @@ class HomeAdapter(private val chatList: ArrayList<UtilityAccount>, private val c
             this.utilityAccountItem = utilityAccountItem
 
             view.item_bill_name.text = utilityAccountItem.accountName
-            view.item_bill_price.text = utilityAccountItem.amount.toString()
+            view.item_bill_price.text = "KSH ${utilityAccountItem.amount.toInt().toString()}"
         }
     }
 }
