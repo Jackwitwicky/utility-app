@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "924a64c185866022722bca7a4eec3e55",
+    "identityHash": "0f24faa0c02b044b769766dc574fd866",
     "entities": [
       {
         "tableName": "UtilityCategory",
@@ -91,7 +91,16 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_UtilityAccountNumber_utility_account_id",
+            "unique": false,
+            "columnNames": [
+              "utility_account_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_UtilityAccountNumber_utility_account_id` ON `${TABLE_NAME}` (`utility_account_id`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "UtilityAccount",
@@ -147,7 +156,24 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_UtilityAccount_utility_category_id",
+            "unique": false,
+            "columnNames": [
+              "utility_category_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_UtilityAccount_utility_category_id` ON `${TABLE_NAME}` (`utility_category_id`)"
+          },
+          {
+            "name": "index_UtilityAccount_utility_company_id",
+            "unique": false,
+            "columnNames": [
+              "utility_company_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_UtilityAccount_utility_company_id` ON `${TABLE_NAME}` (`utility_company_id`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "UtilityCategory",
@@ -220,7 +246,16 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_UtilityTransaction_utility_account_id",
+            "unique": false,
+            "columnNames": [
+              "utility_account_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_UtilityTransaction_utility_account_id` ON `${TABLE_NAME}` (`utility_account_id`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "UtilityAccount",
@@ -239,7 +274,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '924a64c185866022722bca7a4eec3e55')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0f24faa0c02b044b769766dc574fd866')"
     ]
   }
 }

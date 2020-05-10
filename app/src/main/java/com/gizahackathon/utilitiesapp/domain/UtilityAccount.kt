@@ -21,9 +21,9 @@ import java.math.BigDecimal
 data class UtilityAccount(
     @ColumnInfo(name = "utility_account_id") @PrimaryKey(autoGenerate = true) val utilityAccountId: Long = 0,
 
-    @ColumnInfo(name = "utility_category_id") val utilityCategoryId: Long,
+    @ColumnInfo(name = "utility_category_id", index = true) val utilityCategoryId: Long,
 
-    @ColumnInfo(name = "utility_company_id") val utilityCompanyId: Long,
+    @ColumnInfo(name = "utility_company_id", index = true) val utilityCompanyId: Long,
 
     @ColumnInfo(name = "account_name") val accountName: String,
 

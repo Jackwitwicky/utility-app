@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey
 data class UtilityAccountNumber(
     @ColumnInfo(name = "utility_account_number_id") @PrimaryKey(autoGenerate = true) val utilityAccountNumberId: Long = 0,
 
-    @ColumnInfo(name = "utility_account_id") val utilityAccountId: Long,
+    @ColumnInfo(name = "utility_account_id", index = true) val utilityAccountId: Long,
 
     @ColumnInfo(name = "account_number") val accountNumber: Long
 )

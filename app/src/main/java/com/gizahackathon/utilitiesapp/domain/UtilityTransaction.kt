@@ -18,7 +18,7 @@ data class UtilityTransaction(
 
     @ColumnInfo(name = "transaction_id") @PrimaryKey(autoGenerate = true) val transactionId: Long = 0,
 
-    @ColumnInfo(name = "utility_account_id") val utilityAccountId: Long,
+    @ColumnInfo(name = "utility_account_id", index = true) val utilityAccountId: Long,
 
     @ColumnInfo(name = "transaction_status") val transactionStatus: String,
 
