@@ -1,8 +1,10 @@
 package com.gizahackathon.utilitiesapp.ui.addbill
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,6 +35,18 @@ class AddBillActivity : AppCompatActivity() {
         binding.addBillSaveButton.setOnClickListener {
             addWaterBill()
         }
+        hideAmountEditText()
+        binding.addBill = addBillViewModel.addBill
+        // clear errors after text change
+        val textWatcher: (textView: TextView) -> Unit = { it.error = null }
+        listOf(binding.addBillName, binding.addBillAmount)
+            .forEach { it.addTextChangedListener(textWatcher) }
+        // display drop downs for company
+        displayUtilityCategoryDropDown()
+        displayUtilityCompanyDropDown()
+    }
+
+    private fun hideAmountEditText() {
         binding.addBillPaymentTypeRadioGroup.setOnCheckedChangeListener { _, checkedId ->
             binding.fixedAmount = false
             when (checkedId) {
@@ -44,11 +58,6 @@ class AddBillActivity : AppCompatActivity() {
                 }
             }
         }
-        binding.addBill = addBillViewModel.addBill
-        // clear errors after text change
-        val textWatcher: (textView: TextView) -> Unit = { it.error = null }
-        listOf(binding.addBillName, binding.addBillAmount)
-            .forEach { it.addTextChangedListener(textWatcher) }
     }
 
     private fun setupViewModel() {
@@ -56,11 +65,6 @@ class AddBillActivity : AppCompatActivity() {
             ViewModelProvider(this, addBillViewModelFactory).get(AddBillViewModel::class.java)
         addBillViewModel.utilityAccountID.observe(this, Observer { utilityAccountID ->
             Timber.d("The account has been saved with the id of $utilityAccountID")
-        })
-
-        addBillViewModel.getUtilityCompanies()
-        addBillViewModel.utilityCompanies.observe(this, Observer { utilityCompanies ->
-            Timber.d("The companies are: $utilityCompanies")
         })
     }
 
@@ -71,6 +75,64 @@ class AddBillActivity : AppCompatActivity() {
             validationResult.accountNameError != null -> binding.addBillName.requestFocus()
             validationResult.accountAmountError != null -> binding.addBillAmount.requestFocus()
         }
+    }
+
+    private fun displayUtilityCategoryDropDown() {
+        addBillViewModel.getUtilityCategories()
+        addBillViewModel.utilityCategories.observe(this, Observer { utilityCategories ->
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                utilityCategories.map { it.utilityName }
+            )
+            binding.addUtilityCategorySpinner.adapter = adapter
+
+            binding.addUtilityCategorySpinner.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        utilityCategories.map {
+                            binding.paybillVisible = position + 1.toLong() != 1L
+                        }
+                        addBillViewModel.utilityCategoryId = position + 1.toLong()
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                    }
+                }
+        })
+    }
+
+    private fun displayUtilityCompanyDropDown() {
+        addBillViewModel.getUtilityCompanies()
+        addBillViewModel.utilityCompanies.observe(this, Observer { utilityCompanies ->
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                utilityCompanies.map { it.companyName }
+            )
+            binding.addBillCompanySpinner.adapter = adapter
+
+            binding.addBillCompanySpinner.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        addBillViewModel.utilityCompanyId = position + 1.toLong()
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                    }
+                }
+
+        })
     }
 
     private fun addWaterBill() {

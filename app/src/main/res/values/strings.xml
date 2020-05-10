@@ -21,11 +21,16 @@
     <string name="add_bill_fixed_payment_option">yes</string>
     <string name="add_bill_variabled_payment_option">no</string>
     <string name="add_bill_bill_amount">AMOUNT</string>
+    <string name="add_bill_bill_paybill_number">PAYBILL NUMBER</string>
     <string name="add_bill_cancel_button">Cancel</string>
     <string name="add_bill_save_button">Save</string>
     <string name="activity_add_bill">ADD YOUR BILL</string>
     <string name="add_bill_account_name_require">Account name required</string>
     <string name="add_bill_account_amount_require">Amount required</string>
     <string name="action_save">Add Bill</string>
+    <string name="select_company_string">SELECT COMPANY</string>
+    <string name="select_payment_method_string">SELECT PAYMENT METHOD</string>
+    <string name="select_payment_method_string_name">BILL NAME</string>
+    <string name="select_payment_method_string_amount">BILL AMOUNT</string>
 
 </resources>

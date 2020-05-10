@@ -25,6 +25,8 @@ class AddBillViewModel(
     lateinit var utilityCategories: LiveData<List<UtilityCategory>>
     var utilityCompanies: LiveData<List<UtilityCompany>>
     val addBill = AddBillModel()
+    var utilityCategoryId: Long? = null
+    var utilityCompanyId: Long? = null
 
     init {
         utilityCompanies = utilityCompanyRepository.getUtilityCompanies()
@@ -38,7 +40,7 @@ class AddBillViewModel(
         } else if (amount.isNullOrBlank()) {
             ValidationResult(accountAmountError = R.string.add_bill_account_amount_require)
         } else {
-            addBill(1L, 1L, accountName, amount.toBigDecimal())
+            addBill(utilityCategoryId!!, utilityCompanyId!!, accountName, amount.toBigDecimal())
             ValidationResult(isDataValid = true)
         }
 
