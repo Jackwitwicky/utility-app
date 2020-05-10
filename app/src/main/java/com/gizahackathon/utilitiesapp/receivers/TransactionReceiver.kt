@@ -3,9 +3,7 @@ package com.gizahackathon.utilitiesapp.receivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.gizahackathon.utilitiesapp.ui.addbill.AddBillActivity
-import com.gizahackathon.utilitiesapp.ui.home.HomeActivity
-import com.gizahackathon.utilitiesapp.ui.successbill.SuccessBillActivity
+import com.gizahackathon.utilitiesapp.ui.transactionstatus.TransactionStatusActivity
 import timber.log.Timber
 
 class TransactionReceiver : BroadcastReceiver() {
@@ -19,7 +17,7 @@ class TransactionReceiver : BroadcastReceiver() {
 
     private fun openActivity(context: Context,receivedIntent: Intent) {
         var i = Intent(receivedIntent);
-        i.setClass(context, SuccessBillActivity::class.java)
+        i.setClass(context, TransactionStatusActivity::class.java)
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 //        i.putExtra("UUID", receivedIntent.getStringExtra("uuid")
         context.startActivity(i);
