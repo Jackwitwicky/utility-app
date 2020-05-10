@@ -1,4 +1,4 @@
-package com.gizahackathon.utilitiesapp.ui.home
+package com.gizahackathon.utilitiesapp.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,9 @@ import com.gizahackathon.utilitiesapp.domain.UtilityAccount
 import timber.log.Timber
 
 class HomeAdapter(private val itemSelectionListener: ItemSelectionListener) :
-    PagedListAdapter<UtilityAccount, HomeAdapter.ViewHolder>(DIFF_CALLBACK) {
+    PagedListAdapter<UtilityAccount, HomeAdapter.ViewHolder>(
+        DIFF_CALLBACK
+    ) {
 
     interface ItemSelectionListener {
 

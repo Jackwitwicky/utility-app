@@ -1,5 +1,6 @@
 package com.gizahackathon.utilitiesapp.ui.home
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,11 +8,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gizahackathon.utilitiesapp.R
+import com.gizahackathon.utilitiesapp.adapter.HomeAdapter
 import com.gizahackathon.utilitiesapp.domain.UtilityAccount
 import com.gizahackathon.utilitiesapp.ui.addbill.AddBillActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_home.*
+import timber.log.Timber
 import javax.inject.Inject
+
+const val CONFIRM_PAYMENT_REQUEST_CODE = 0
 
 class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener {
 
@@ -39,7 +44,8 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener {
 
     private fun setupUtilityList() {
         //configure recycler view
-        val homeListAdapter = HomeAdapter(this)
+        val homeListAdapter =
+            HomeAdapter(this)
         home_recycler_view.apply {
             adapter = homeListAdapter
             layoutManager = LinearLayoutManager(applicationContext)
@@ -51,7 +57,16 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener {
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CONFIRM_PAYMENT_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Timber.d("Confirm payment")
+        }
+    }
+
     override fun onPressPay(utilityAccount: UtilityAccount) {
-        // place hover implementation to pass amount
+        PaymentConfirmationDialog.newInstance(
+            utilityAccount.amount.setScale(2).toString(), utilityAccount.accountName
+        ).show(supportFragmentManager, "Tag_ConfirmPaymentDialog")
     }
 }
