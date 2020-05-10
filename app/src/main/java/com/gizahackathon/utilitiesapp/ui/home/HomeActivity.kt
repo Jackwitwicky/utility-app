@@ -3,7 +3,9 @@ package com.gizahackathon.utilitiesapp.ui.home
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,8 +21,9 @@ import timber.log.Timber
 import javax.inject.Inject
 
 const val CONFIRM_PAYMENT_REQUEST_CODE = 0
+const val PAY_UTILITY_REQUEST_CODE = 1
 
-class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener {
+class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener, PaymentConfirmationDialog.OnButtonClickedListener {
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -62,13 +65,14 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Timber.d("I am the result with code $requestCode and result code $resultCode")
-        if (requestCode == CONFIRM_PAYMENT_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            Timber.d("Confirm payment")
-            var hoverIntent = HoverParameters.Builder(this)
-                .request("0380a0cf")
-                .buildIntent()
-            startActivityForResult(hoverIntent, 1)
+        if (requestCode == PAY_UTILITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val sessionTextArr =
+            data!!.getStringArrayExtra("session_messages")
+            val uuid = data!!.getStringExtra("uuid")
+            Timber.d("The session message is: $sessionTextArr and the UUID is $uuid")
+        } else if (requestCode === 0 && resultCode === Activity.RESULT_CANCELED) {
+            Toast.makeText(this, "Error: " + data!!.getStringExtra("error"), Toast.LENGTH_LONG)
+                .show()
         }
     }
 
@@ -78,17 +82,23 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener {
         ).show(supportFragmentManager, "Tag_ConfirmPaymentDialog")
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if (requestCode === 0 && resultCode === Activity.RESULT_OK) {
-//            val sessionTextArr =
-//                data!!.getStringArrayExtra("session_messages")
-//            val uuid = data!!.getStringExtra("uuid")
-//            Timber.d("The session message is: $sessionTextArr and the UUID is $uuid")
-//        } else if (requestCode === 0 && resultCode === Activity.RESULT_CANCELED) {
-//            Toast.makeText(this, "Error: " + data!!.getStringExtra("error"), Toast.LENGTH_LONG)
-//                .show()
-//        }
-//    }
+    override fun onAttachFragment(fragment: Fragment) {
+        if (fragment is PaymentConfirmationDialog) {
+            fragment.setOnButtonClickedListener(this)
+        }
+    }
+
+
+    override fun onConfirmationDialogButtonClicked(userOption: Int) {
+        if (userOption == Activity.RESULT_OK) {
+            Timber.d("Confirm payment")
+            var hoverIntent = HoverParameters.Builder(this)
+                .request("0380a0cf")
+                .buildIntent()
+            startActivityForResult(hoverIntent, PAY_UTILITY_REQUEST_CODE)
+        }
+        else {
+            Timber.d("User cancelled")
+        }
+    }
 }

@@ -12,6 +12,16 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class PaymentConfirmationDialog : DialogFragment() {
 
+    internal lateinit var callback: OnButtonClickedListener
+
+    fun setOnButtonClickedListener(callback: OnButtonClickedListener) {
+        this.callback = callback
+    }
+
+    interface OnButtonClickedListener {
+        fun onConfirmationDialogButtonClicked(userOption: Int)
+    }
+
     companion object {
         private const val AMOUNT_TO_BE_PAID = "AMOUNT_TO_BE_PAID"
         private const val COMPANY_TO_PAY_TO = "COMPANY_TO_PAY_TO"
@@ -43,9 +53,11 @@ class PaymentConfirmationDialog : DialogFragment() {
             .setView(binding.root)
             .setPositiveButton(R.string.confirmation_continue) { _, _ ->
                 targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, null)
+                callback.onConfirmationDialogButtonClicked(Activity.RESULT_OK)
             }
             .setNegativeButton(android.R.string.cancel) { _, _ ->
                 targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_CANCELED, null)
+                callback.onConfirmationDialogButtonClicked(Activity.RESULT_CANCELED)
             }
             .create()
 
