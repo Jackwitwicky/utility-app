@@ -12,6 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <receiver
+            android:name=".receivers.TransactionReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.gizahackathon.utilitiesapp.CONFIRMED_TRANSACTION"/>
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".ui.addbill.AddBillActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity

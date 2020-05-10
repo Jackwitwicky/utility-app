@@ -1,20 +1,22 @@
 package com.gizahackathon.utilitiesapp.ui.home
 
+import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.gizahackathon.utilitiesapp.R
 import com.gizahackathon.utilitiesapp.domain.UtilityAccount
 import com.gizahackathon.utilitiesapp.ui.addbill.AddBillActivity
-import com.gizahackathon.utilitiesapp.ui.addbill.AddBillDialogFragment
+import com.hover.sdk.api.Hover
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_home.*
 import timber.log.Timber
 import javax.inject.Inject
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -30,6 +32,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        Hover.initialize(this)
         add_bill_fab.setOnClickListener {
 //            val addBillDialogFragment =
 //                AddBillDialogFragment()
@@ -62,5 +65,19 @@ class HomeActivity : AppCompatActivity() {
 
         home_recycler_view.layoutManager = layoutManager
         home_recycler_view.adapter = homeAdapter
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode === 0 && resultCode === Activity.RESULT_OK) {
+            val sessionTextArr =
+                data!!.getStringArrayExtra("session_messages")
+            val uuid = data!!.getStringExtra("uuid")
+            Timber.d("The session message is: $sessionTextArr and the UUID is $uuid")
+        } else if (requestCode === 0 && resultCode === Activity.RESULT_CANCELED) {
+            Toast.makeText(this, "Error: " + data!!.getStringExtra("error"), Toast.LENGTH_LONG)
+                .show()
+        }
     }
 }

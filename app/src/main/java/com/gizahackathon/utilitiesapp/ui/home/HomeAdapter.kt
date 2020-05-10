@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gizahackathon.utilitiesapp.R
 import com.gizahackathon.utilitiesapp.domain.UtilityAccount
+import com.hover.sdk.api.HoverParameters
 import kotlinx.android.synthetic.main.item_home_bill.view.*
+import timber.log.Timber
 
 class HomeAdapter(private var utilityAccountList: List<UtilityAccount>, private val context: Activity) : RecyclerView.Adapter<HomeAdapter.UtilityListHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UtilityListHolder {
@@ -38,14 +40,19 @@ class HomeAdapter(private var utilityAccountList: List<UtilityAccount>, private 
     class UtilityListHolder(v: View, context: Context) : RecyclerView.ViewHolder(v), View.OnClickListener {
         private  var view: View = v
         private var utilityAccountItem: UtilityAccount? = null
-        var mContext = context
+        var mContext = context as Activity
 
         init {
-            v.setOnClickListener(this)
+//            v.setOnClickListener(this)
+            view.item_bill_pay.setOnClickListener(this)
         }
 
-        override fun onClick(p0: View?) {
-            Log.d("ChatListAdapter", "Click")
+        override fun onClick(itemView: View?) {
+            Timber.d("The bill name is: ${utilityAccountItem!!.accountName}")
+            var hoverIntent = HoverParameters.Builder(mContext)
+                .request("0380a0cf")
+                .buildIntent()
+            mContext.startActivityForResult(hoverIntent, 0)
         }
 
         fun bindGroup(utilityAccountItem: UtilityAccount) {
