@@ -20,6 +20,10 @@
     <string name="home_item_bill_name">KPLC</string>
     <string name="home_item_bill_amount">KSH 2000</string>
     <string name="home_item_bill_pay_button">PAY</string>
+    <string name="ksh_value_holder">KSH %d</string>
+    <string name="complete_bill_payment">COMPLETE BILL PAYMENT</string>
+    <string name="confirm_amount_dialog_string">You are about to pay <font fgcolor="#ffff0000">KSH %s</font> to %s</string>
+    <string name="confirmation_continue">Continue</string>
 
     <!--    Add Bill Dialog-->
     <string name="add_bill_title">ADD BILL</string>
@@ -40,7 +44,7 @@
     <string name="select_payment_method_string_name">BILL NAME</string>
     <string name="select_payment_method_string_amount">BILL AMOUNT</string>
 
-<!--    Success Bill Dialog-->
+<!--    Transaction Status Dialog-->
     <string name="transaction_status_success_header">SUCCESS!</string>
     <string name="transaction_status_success_message">You have successfully paid KSH %d to %s</string>
     <string name="transaction_status_fail_header">FAIL</string>

@@ -42,7 +42,7 @@ class AddBillViewModel(
                 utilityCategoryId!!,
                 utilityCompanyId!!,
                 accountName,
-                BigDecimal(amount)
+                if (amount.isNullOrBlank()) null else BigDecimal(amount)
             )
             ValidationResult(isDataValid = true)
         }

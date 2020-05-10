@@ -8,23 +8,28 @@ import com.gizahackathon.utilitiesapp.domain.UtilityCategory
 import com.gizahackathon.utilitiesapp.domain.UtilityCompany
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Singleton
 
 
 @Module
 class AppDatabaseModule constructor(context: Context, test: Boolean = false) {
 
-    val POPULATE_UTILITY_COMPANIES = listOf(UtilityCompany(1L, "kplc_prepaid", 888880),
-        UtilityCompany(2L, "kplc_postpaid", 888888),
-        UtilityCompany(3L, "zuku", 320323),
-        UtilityCompany(4L, "go_tv", 423655),
-        UtilityCompany(5L, "star_times_tv", 585858),
-        UtilityCompany(6L, "nairobi_water", 444400))
+    val POPULATE_UTILITY_COMPANIES = listOf(
+        UtilityCompany(1L, "KPLC PREPAID", 888880),
+        UtilityCompany(2L, "KPLC POSTPAID", 888888),
+        UtilityCompany(3L, "ZUKU", 320323),
+        UtilityCompany(4L, "GO TV", 423655),
+        UtilityCompany(5L, "START TIMES TV", 585858),
+        UtilityCompany(6L, "NAIROBI WATER", 444400)
+    )
 
-    val POPULATE_UTILITY_CATEGORIES = listOf(UtilityCategory(1L, "paybill"),
-        UtilityCategory(2L, "till_number"),
-        UtilityCategory(3L, "phone_number"))
+    val POPULATE_UTILITY_CATEGORIES = listOf(
+        UtilityCategory(1L, "PAYBILL"),
+        UtilityCategory(2L, "TILL NUMBER"),
+        UtilityCategory(3L, "PHONE NUMBER")
+    )
 
     private val appDatabase: AppDatabase = if (test) {
         Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
