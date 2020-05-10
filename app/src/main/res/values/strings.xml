@@ -15,7 +15,7 @@
     <string name="home_monthly_payment_bill">KSH 4000</string>
 
 
-<!--    home bills list-->
+    <!--    home bills list-->
     <string name="home_bill_header">BILLS LIST</string>
     <string name="home_item_bill_name">KPLC</string>
     <string name="home_item_bill_amount">KSH 2000</string>
@@ -39,5 +39,10 @@
     <string name="select_payment_method_string">SELECT PAYMENT METHOD</string>
     <string name="select_payment_method_string_name">BILL NAME</string>
     <string name="select_payment_method_string_amount">BILL AMOUNT</string>
+
+<!--    Success Bill Dialog-->
+    <string name="success_header">SUCCESS!</string>
+    <string name="success_message">You have successfully paid KSH %d to %s</string>
+    <string name="success_go_back">GO BACK</string>
 
 </resources>

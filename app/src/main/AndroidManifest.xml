@@ -12,20 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <receiver
-            android:name=".receivers.TransactionReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.gizahackathon.utilitiesapp.CONFIRMED_TRANSACTION"/>
-            </intent-filter>
-        </receiver>
-
-        <activity android:name=".ui.addbill.AddBillActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".ui.home.HomeActivity"
+        <activity android:name=".ui.successbill.SuccessBillActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,13 +21,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.addbill.AddBillActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.home.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
+        <activity
+            android:name=".ui.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <receiver
+            android:name=".receivers.TransactionReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.gizahackathon.utilitiesapp.CONFIRMED_TRANSACTION" />
+            </intent-filter>
+        </receiver>
 
         <meta-data
             android:name="com.hover.ApiKey"
-            android:value="65e1015898a473b4fb9bfc0651483870"/>
+            android:value="65e1015898a473b4fb9bfc0651483870" />
     </application>
 
 </manifest>
