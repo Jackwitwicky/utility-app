@@ -14,6 +14,13 @@
     <string name="home_monthly_payment_prompt">YOUR PAID BILLS FOR THIS MONTH</string>
     <string name="home_monthly_payment_bill">KSH 4000</string>
 
+
+<!--    home bills list-->
+    <string name="home_bill_header">BILLS LIST</string>
+    <string name="home_item_bill_name">KPLC</string>
+    <string name="home_item_bill_amount">KSH 2000</string>
+    <string name="home_item_bill_pay_button">PAY</string>
+
     <!--    Add Bill Dialog-->
     <string name="add_bill_title">ADD BILL</string>
     <string name="add_bill_name">Name e.g. Home Bill</string>

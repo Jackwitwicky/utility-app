@@ -77,4 +77,5 @@ dependencies {
     // additional libraries
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.hover:android-sdk:1.5.1'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
