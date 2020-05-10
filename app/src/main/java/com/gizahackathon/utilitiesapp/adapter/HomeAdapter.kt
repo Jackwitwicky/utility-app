@@ -69,10 +69,12 @@ class HomeAdapter(private val itemSelectionListener: ItemSelectionListener) :
                 utilityBillItem = currentUtilityAccount
                 onClickListener = onSelectedListener
                 itemBillName.text = currentUtilityAccount!!.accountName
-                itemBillPrice.text = itemView.context.resources.getString(
-                    R.string.ksh_value_holder,
-                    currentUtilityAccount.amount.toInt()
-                )
+                if (currentUtilityAccount.amount.toInt() > 0) {
+                    itemBillPrice.text = itemView.context.resources.getString(
+                        R.string.ksh_value_holder,
+                        currentUtilityAccount.amount.toInt()
+                    )
+                }
 
                 executePendingBindings()
             }

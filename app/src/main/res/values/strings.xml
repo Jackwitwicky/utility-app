@@ -18,7 +18,7 @@
     <!--    home bills list-->
     <string name="home_bill_header">BILLS LIST</string>
     <string name="home_item_bill_name">KPLC</string>
-    <string name="home_item_bill_amount">KSH 2000</string>
+    <string name="home_item_bill_amount">Configure Amount</string>
     <string name="home_item_bill_pay_button">PAY</string>
     <string name="ksh_value_holder">KSH %d</string>
     <string name="complete_bill_payment">COMPLETE BILL PAYMENT</string>
@@ -32,7 +32,7 @@
     <string name="add_bill_fixed_payment_option">yes</string>
     <string name="add_bill_variabled_payment_option">no</string>
     <string name="add_bill_bill_amount">AMOUNT</string>
-    <string name="add_bill_bill_paybill_number">PAYBILL NUMBER</string>
+    <string name="add_bill_bill_paybill_number">ACCOUNT NUMBER</string>
     <string name="add_bill_cancel_button">Cancel</string>
     <string name="add_bill_save_button">Save</string>
     <string name="activity_add_bill">ADD YOUR BILL</string>
