@@ -15,11 +15,12 @@
     <string name="home_monthly_payment_bill">KSH 4000</string>
 
 
-<!--    home bills list-->
+    <!--    home bills list-->
     <string name="home_bill_header">BILLS LIST</string>
     <string name="home_item_bill_name">KPLC</string>
     <string name="home_item_bill_amount">KSH 2000</string>
     <string name="home_item_bill_pay_button">PAY</string>
+    <string name="ksh_value_holder">KSH %d</string>
 
     <!--    Add Bill Dialog-->
     <string name="add_bill_title">ADD BILL</string>
