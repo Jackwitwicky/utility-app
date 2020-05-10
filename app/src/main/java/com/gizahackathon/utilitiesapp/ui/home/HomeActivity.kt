@@ -62,12 +62,13 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Timber.d("I am the result with code $requestCode and result code $resultCode")
         if (requestCode == CONFIRM_PAYMENT_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             Timber.d("Confirm payment")
             var hoverIntent = HoverParameters.Builder(this)
                 .request("0380a0cf")
                 .buildIntent()
-            startActivityForResult(hoverIntent, 0)
+            startActivityForResult(hoverIntent, 1)
         }
     }
 
