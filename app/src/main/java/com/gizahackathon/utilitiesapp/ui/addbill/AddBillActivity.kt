@@ -70,10 +70,8 @@ class AddBillActivity : AppCompatActivity() {
 
     private fun showValidationResult(validationResult: ValidationResult) {
         binding.addBillName.setStringError(validationResult.accountNameError)
-        binding.addBillAmount.setStringError(validationResult.accountAmountError)
         when {
             validationResult.accountNameError != null -> binding.addBillName.requestFocus()
-            validationResult.accountAmountError != null -> binding.addBillAmount.requestFocus()
         }
     }
 
