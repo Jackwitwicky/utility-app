@@ -14,7 +14,7 @@
             type="boolean" />
 
         <variable
-            name="paybillVisible"
+            name="phoneNumberVisible"
             type="boolean" />
     </data>
 
@@ -160,15 +160,16 @@
                     </RadioGroup>
 
                     <EditText
-                        android:id="@+id/paybill_number"
+                        android:id="@+id/phone_number"
                         style="@style/editTextDrawableTheme"
-                        isGone="@{paybillVisible}"
+                        isGone="@{phoneNumberVisible}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
+                        android:text="@={addBill.phoneNumber}"
                         android:layout_marginEnd="16dp"
-                        android:hint="@string/add_bill_bill_paybill_number"
+                        android:hint="@string/add_bill_bill_phone_number"
                         android:imeActionId="6"
                         android:imeActionLabel="@string/action_save"
                         android:imeOptions="actionDone"
@@ -290,13 +291,13 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        isGone="@{paybillVisible}"
+                        isGone="@{phoneNumberVisible}"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:text="@string/add_bill_bill_paybill_number"
+                        android:text="@string/add_bill_bill_phone_number"
                         android:textColor="@color/colorAccent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -315,7 +316,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/paybill_number" />
+                        app:layout_constraintTop_toBottomOf="@+id/phone_number" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>

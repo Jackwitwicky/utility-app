@@ -23,7 +23,8 @@ import javax.inject.Inject
 const val CONFIRM_PAYMENT_REQUEST_CODE = 0
 const val PAY_UTILITY_REQUEST_CODE = 1
 
-class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener, PaymentConfirmationDialog.OnButtonClickedListener {
+class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener,
+    PaymentConfirmationDialog.OnButtonClickedListener {
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -67,8 +68,8 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener, Pay
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PAY_UTILITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val sessionTextArr =
-            data!!.getStringArrayExtra("session_messages")
-            val uuid = data!!.getStringExtra("uuid")
+                data!!.getStringArrayExtra("session_messages")
+            val uuid = data.getStringExtra("uuid")
             Timber.d("The session message is: $sessionTextArr and the UUID is $uuid")
         } else if (requestCode === 0 && resultCode === Activity.RESULT_CANCELED) {
             Toast.makeText(this, "Error: " + data!!.getStringExtra("error"), Toast.LENGTH_LONG)
@@ -78,7 +79,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener, Pay
 
     override fun onPressPay(utilityAccount: UtilityAccount) {
         PaymentConfirmationDialog.newInstance(
-            utilityAccount.amount.setScale(2).toString(), utilityAccount.accountName
+            utilityAccount.amount.setScale(2).toString(), utilityAccount.phoneNumber.toString()
         ).show(supportFragmentManager, "Tag_ConfirmPaymentDialog")
     }
 
@@ -93,11 +94,12 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener, Pay
         if (userOption == Activity.RESULT_OK) {
             Timber.d("Confirm payment")
             var hoverIntent = HoverParameters.Builder(this)
-                .request("0380a0cf")
+                .request("02dc81bc")
+                .extra("PhoneNumber", "220220")
+                .extra("Amount", "0779977507")
                 .buildIntent()
             startActivityForResult(hoverIntent, PAY_UTILITY_REQUEST_CODE)
-        }
-        else {
+        } else {
             Timber.d("User cancelled")
         }
     }

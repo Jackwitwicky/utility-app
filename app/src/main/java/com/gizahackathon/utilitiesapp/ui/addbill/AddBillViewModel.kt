@@ -35,6 +35,7 @@ class AddBillViewModel(
     fun validateFormAndSave(): ValidationResult {
         val accountName = addBill.accountName.get()
         val amount = addBill.accountAmount.get()
+        val phoneNumber = addBill.phoneNumber.get()
         return if (accountName.isNullOrBlank()) {
             ValidationResult(accountNameError = R.string.add_bill_account_name_require)
         } else {
@@ -42,7 +43,8 @@ class AddBillViewModel(
                 utilityCategoryId!!,
                 utilityCompanyId!!,
                 accountName,
-                if (amount.isNullOrBlank()) null else BigDecimal(amount)
+                if (amount.isNullOrBlank()) null else BigDecimal(amount),
+                phoneNumber!!.toLong()
             )
             ValidationResult(isDataValid = true)
         }
@@ -53,14 +55,16 @@ class AddBillViewModel(
         utilityCategoryId: Long,
         utilityCompanyId: Long,
         accountName: String,
-        amount: BigDecimal?
+        amount: BigDecimal?,
+        phoneNumber: Long
     ) {
         viewModelScope.launch {
             val utilityAccount = UtilityAccount(
                 utilityCategoryId = utilityCategoryId,
                 utilityCompanyId = utilityCompanyId,
                 accountName = accountName,
-                amount = amount ?: BigDecimal.ZERO
+                amount = amount ?: BigDecimal.ZERO,
+                phoneNumber = phoneNumber
             )
             utilityAccountRepository.save(utilityAccount)
         }

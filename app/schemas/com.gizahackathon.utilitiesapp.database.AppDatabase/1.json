@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "0f24faa0c02b044b769766dc574fd866",
+    "identityHash": "d4cbe03e88e9dc24d4341ea4a6363210",
     "entities": [
       {
         "tableName": "UtilityCategory",
@@ -117,7 +117,7 @@
       },
       {
         "tableName": "UtilityAccount",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`utility_account_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `utility_category_id` INTEGER NOT NULL, `utility_company_id` INTEGER NOT NULL, `account_name` TEXT NOT NULL, `amount` TEXT NOT NULL, FOREIGN KEY(`utility_category_id`) REFERENCES `UtilityCategory`(`utility_category_id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`utility_company_id`) REFERENCES `UtilityCompany`(`utility_company_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`utility_account_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `utility_category_id` INTEGER NOT NULL, `utility_company_id` INTEGER NOT NULL, `account_name` TEXT NOT NULL, `amount` TEXT NOT NULL, `phoneNumber` INTEGER NOT NULL, FOREIGN KEY(`utility_category_id`) REFERENCES `UtilityCategory`(`utility_category_id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`utility_company_id`) REFERENCES `UtilityCompany`(`utility_company_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "utilityAccountId",
@@ -147,6 +147,12 @@
             "fieldPath": "amount",
             "columnName": "amount",
             "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "phoneNumber",
+            "columnName": "phoneNumber",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -274,7 +280,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0f24faa0c02b044b769766dc574fd866')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd4cbe03e88e9dc24d4341ea4a6363210')"
     ]
   }
 }

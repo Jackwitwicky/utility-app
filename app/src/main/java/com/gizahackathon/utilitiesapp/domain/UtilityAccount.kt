@@ -27,5 +27,7 @@ data class UtilityAccount(
 
     @ColumnInfo(name = "account_name") val accountName: String,
 
-    @ColumnInfo(name = "amount") val amount: BigDecimal
+    @ColumnInfo(name = "amount") val amount: BigDecimal,
+
+    @ColumnInfo(name = "phoneNumber") val phoneNumber: Long
 )

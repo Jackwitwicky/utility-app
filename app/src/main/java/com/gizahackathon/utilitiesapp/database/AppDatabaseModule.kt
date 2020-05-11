@@ -22,13 +22,14 @@ class AppDatabaseModule constructor(context: Context, test: Boolean = false) {
         UtilityCompany(3L, "ZUKU", 320323),
         UtilityCompany(4L, "GO TV", 423655),
         UtilityCompany(5L, "START TIMES TV", 585858),
-        UtilityCompany(6L, "NAIROBI WATER", 444400)
+        UtilityCompany(6L, "NAIROBI WATER", 444400),
+        UtilityCompany(6L, "CUSTOM USER", 444400)
     )
 
     val POPULATE_UTILITY_CATEGORIES = listOf(
-        UtilityCategory(1L, "PAYBILL"),
+        UtilityCategory(1L, "PHONE NUMBER"),
         UtilityCategory(2L, "TILL NUMBER"),
-        UtilityCategory(3L, "PHONE NUMBER")
+        UtilityCategory(3L, "PAY BILL")
     )
 
     private val appDatabase: AppDatabase = if (test) {

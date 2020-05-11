@@ -94,7 +94,7 @@ class AddBillActivity : AppCompatActivity() {
                         id: Long
                     ) {
                         utilityCategories.map {
-                            binding.paybillVisible = position + 1.toLong() != 1L
+                            binding.phoneNumberVisible = position + 1.toLong() != 1L
                         }
                         addBillViewModel.utilityCategoryId = position + 1.toLong()
                     }
