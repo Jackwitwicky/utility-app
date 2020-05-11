@@ -22,7 +22,8 @@
             android:id="@+id/item_bill_icon"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@color/colorPrimary" />
+            android:src="@color/colorPrimary"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/item_bill_name"
@@ -75,8 +76,8 @@
         <View
             android:id="@+id/item_bill_divider"
             android:layout_width="1dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@id/item_bill_pay"
             android:background="@color/colorPrimary" />

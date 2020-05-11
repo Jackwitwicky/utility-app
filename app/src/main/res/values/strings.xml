@@ -25,6 +25,7 @@
     <string name="complete_bill_payment">COMPLETE BILL PAYMENT</string>
     <string name="confirm_amount_dialog_string">You are about to pay <font fgcolor="#ffff0000">KSH %s</font> to %s</string>
     <string name="confirmation_continue">Continue</string>
+    <string name="no_bills_present">You don\'t have any bills configured. Use the add button to get started</string>
 
     <!--    Add Bill Dialog-->
     <string name="add_bill_title">ADD BILL</string>

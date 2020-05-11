@@ -33,7 +33,7 @@
     <ImageView
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_white_line_logo"
+        app:srcCompat="@drawable/ic_white_line_logo"
         android:contentDescription="@string/splash_logo_content_description"
         android:layout_toLeftOf="@id/home_monthly_payment_prompt"
         android:layout_marginRight="16dp"
@@ -70,7 +70,7 @@
         android:id="@+id/add_bill_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_white_24dp"
+        app:srcCompat="@drawable/ic_add_white_24dp"
         android:layout_marginBottom="16dp"
         app:tint="@android:color/white"
         android:scaleType="center"
@@ -85,7 +85,7 @@
         android:id="@+id/home_home_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_home_icon_selected"
+        app:srcCompat="@drawable/ic_home_icon_selected"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
         android:layout_toLeftOf="@id/add_bill_fab"
@@ -97,7 +97,7 @@
         android:id="@+id/home_graph_buttom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_graph_icon_unselected"
+        app:srcCompat="@drawable/ic_graph_icon_unselected"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
         android:layout_toRightOf="@id/add_bill_fab"
@@ -111,5 +111,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/home_bill_header"
         android:layout_above="@id/add_bill_fab"/>
+
+    <TextView
+        android:id="@+id/no_bills_present"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_bills_present"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center_horizontal"
+        android:visibility="visible"/>
 
 </RelativeLayout>
