@@ -1,8 +1,8 @@
-# Utilities App
+# Bills App
 
-Introducing Utilities App, and Android based application to help you organize, pay and track your bills all in one beautifully designed place. Say goodbye to scribbling
+Introducing Bills App, and Android based application to help you organize, pay and track your bills all in one beautifully designed place. Say goodbye to scribbling
 your 10 digit electricity meter number on a piece of paper as you pay via MPESA, or calling your TV subscription company a third time in a row to ask what your account number is.
-Using Utilities App, simply create a new bill and save all key details about it. This allows you pay via MPESA in the click of button.
+Using Bills App, simply create a new bill and save all key details about it. This allows you pay via MPESA in the click of button.
 
 
 Splash Screen             |  Add Bill Screen
