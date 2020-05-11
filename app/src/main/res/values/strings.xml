@@ -1,6 +1,54 @@
 <resources>
-    <string name="app_name">Utilities App</string>
+    <string name="app_name">Bills</string>
+    <string name="currency">KSH</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Splash Screen-->
+    <string name="splash_app_name">BILLS</string>
+    <string name="splash_intro">MANAGE YOUR BILLS</string>
+    <string name="splash_logo_content_description">bill app logo</string>
+
+    <!--    home activity-->
+    <string name="home_monthly_payment_prompt">YOUR PAID BILLS FOR THIS MONTH</string>
+    <string name="home_monthly_payment_bill">KSH 4000</string>
+
+
+    <!--    home bills list-->
+    <string name="home_bill_header">BILLS LIST</string>
+    <string name="home_item_bill_name">KPLC</string>
+    <string name="home_item_bill_amount">Configure Amount</string>
+    <string name="home_item_bill_pay_button">PAY</string>
+    <string name="ksh_value_holder">KSH %d</string>
+    <string name="complete_bill_payment">COMPLETE BILL PAYMENT</string>
+    <string name="confirm_amount_dialog_string">You are about to pay <font fgcolor="#ffff0000">KSH %s</font> to %s</string>
+    <string name="confirmation_continue">Continue</string>
+
+    <!--    Add Bill Dialog-->
+    <string name="add_bill_title">ADD BILL</string>
+    <string name="add_bill_name">Name e.g. Home Bill</string>
+    <string name="add_bill_payment_prompt">Does this bill have a fixed payment amount?</string>
+    <string name="add_bill_fixed_payment_option">yes</string>
+    <string name="add_bill_variabled_payment_option">no</string>
+    <string name="add_bill_bill_amount">AMOUNT</string>
+    <string name="add_bill_bill_paybill_number">ACCOUNT NUMBER</string>
+    <string name="add_bill_cancel_button">Cancel</string>
+    <string name="add_bill_save_button">Save</string>
+    <string name="activity_add_bill">ADD YOUR BILL</string>
+    <string name="add_bill_account_name_require">Account name required</string>
+    <string name="add_bill_account_amount_require">Amount required</string>
+    <string name="action_save">Add Bill</string>
+    <string name="select_company_string">SELECT COMPANY</string>
+    <string name="select_payment_method_string">SELECT PAYMENT METHOD</string>
+    <string name="select_payment_method_string_name">BILL NAME</string>
+    <string name="select_payment_method_string_amount">BILL AMOUNT</string>
+
+<!--    Transaction Status Dialog-->
+    <string name="transaction_status_success_header">SUCCESS!</string>
+    <string name="transaction_status_success_message">You have successfully paid KSH %d to %s</string>
+    <string name="transaction_status_fail_header">FAIL</string>
+    <string name="transaction_status_fail_message">Payment of cash KSH %d to %s has failed</string>
+    <string name="transaction_status_go_back">GO BACK</string>
+
 </resources>

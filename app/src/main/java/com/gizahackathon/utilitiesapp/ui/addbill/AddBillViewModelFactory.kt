@@ -1,13 +1,18 @@
 package com.gizahackathon.utilitiesapp.ui.addbill
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.gizahackathon.utilitiesapp.repository.UtilityAccountRepository
+import com.gizahackathon.utilitiesapp.repository.UtilityCategoryRepository
+import com.gizahackathon.utilitiesapp.repository.UtilityCompanyRepository
+import javax.inject.Inject
 
-class AddBillViewModelFactory(private val mApplication: Application) :
+class AddBillViewModelFactory @Inject constructor(private val utilityCategoryRepository: UtilityCategoryRepository,
+                                                  private val utilityAccountRepository: UtilityAccountRepository,
+                                                  private val utilityCompanyRepository: UtilityCompanyRepository) :
     ViewModelProvider.Factory {
-
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return AddBillViewModel(mApplication) as T
+        return AddBillViewModel(utilityCategoryRepository, utilityAccountRepository, utilityCompanyRepository) as T
     }
 }

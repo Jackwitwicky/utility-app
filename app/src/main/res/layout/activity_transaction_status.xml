@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.transactionstatus.TransactionStatusActivity"
+    android:background="@color/colorPrimary">
+
+
+    <ImageView
+        android:id="@+id/transaction_status_logo"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:srcCompat="@drawable/ic_white_line_logo"
+        android:contentDescription="@string/splash_logo_content_description"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <ImageView
+        android:id="@+id/transaction_status_arch"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/home_arch"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="fitEnd"
+        />
+
+    <RelativeLayout
+        android:id="@+id/transaction_status_dialog_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rectangle_background"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/transaction_status_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/transaction_status_success_header"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="3dp"/>
+
+        <ImageView
+            android:id="@+id/transaction_status_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_success_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/transaction_status_header"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/transaction_status_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/transaction_status_success_message"
+            android:layout_below="@id/transaction_status_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"/>
+
+        <Button
+            android:id="@+id/transaction_status_go_back_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/colorAccent"
+            android:text="@string/transaction_status_go_back"
+            android:layout_below="@id/transaction_status_message"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

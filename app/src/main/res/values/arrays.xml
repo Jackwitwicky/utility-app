@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="company_options">
+        <item>Billing Company</item>
+        <item>KPLC Prepaid</item>
+        <item>KPLC Postpaid</item>
+        <item>Nairobi Water Company</item>
+        <item>Add new company</item>
+    </string-array>
+</resources>
