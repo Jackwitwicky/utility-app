@@ -16,7 +16,7 @@ class TransactionReceiver : BroadcastReceiver() {
     }
 
     private fun openActivity(context: Context,receivedIntent: Intent) {
-        var i = Intent(receivedIntent);
+        var i = Intent(receivedIntent)
         i.setClass(context, TransactionStatusActivity::class.java)
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 //        i.putExtra("UUID", receivedIntent.getStringExtra("uuid")
