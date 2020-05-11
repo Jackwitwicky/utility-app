@@ -27,6 +27,9 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener,
     PaymentConfirmationDialog.OnButtonClickedListener {
 
     private lateinit var homeViewModel: HomeViewModel
+    private var amount: String? = null
+    private var phoneNumber: String? = null
+
 
     @Inject
     lateinit var homeViewModelFactory: HomeViewModelFactory
@@ -67,6 +70,8 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener,
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PAY_UTILITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+
             val sessionTextArr =
                 data!!.getStringArrayExtra("session_messages")
             val uuid = data.getStringExtra("uuid")
@@ -78,9 +83,12 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener,
     }
 
     override fun onPressPay(utilityAccount: UtilityAccount) {
+        amount = utilityAccount.amount.toString()
+        phoneNumber = utilityAccount.phoneNumber.toString()
         PaymentConfirmationDialog.newInstance(
             utilityAccount.amount.setScale(2).toString(), utilityAccount.phoneNumber.toString()
         ).show(supportFragmentManager, "Tag_ConfirmPaymentDialog")
+
     }
 
     override fun onAttachFragment(fragment: Fragment) {
@@ -91,12 +99,15 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener,
 
 
     override fun onConfirmationDialogButtonClicked(userOption: Int) {
+        Timber.d("Phone Number %s", phoneNumber)
+        Timber.d("Amount %s", amount)
+
         if (userOption == Activity.RESULT_OK) {
             Timber.d("Confirm payment")
             var hoverIntent = HoverParameters.Builder(this)
                 .request("02dc81bc")
-                .extra("PhoneNumber", "220220")
-                .extra("Amount", "0779977507")
+                .extra("PhoneNumber", phoneNumber)
+                .extra("Amount", amount)
                 .buildIntent()
             startActivityForResult(hoverIntent, PAY_UTILITY_REQUEST_CODE)
         } else {
