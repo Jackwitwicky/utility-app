@@ -7,11 +7,15 @@ Using Utilities App, simply create a new bill and save all key details about it.
 
 Splash Screen             |  Home Screen
 :-------------------------:|:-------------------------:
-![](https://user-images.githubusercontent.com/8895134/81540466-60599c00-937a-11ea-97f6-7a2b0237652f.png)  |  ![](https://user-images.githubusercontent.com/8895134/81540905-03aab100-937b-11ea-9ce8-23377fe05055.png)
+![](https://user-images.githubusercontent.com/8895134/81540466-60599c00-937a-11ea-97f6-7a2b0237652f.png)  |  ![](https://user-images.githubusercontent.com/8895134/81540617-93039480-937a-11ea-99b8-0637f2188f38.png)
 
-Add Bill Screen             |  Success Transaction
+Add Bill Screen             |  Confirm Transaction
 :-------------------------:|:-------------------------:
-![](https://user-images.githubusercontent.com/8895134/81540617-93039480-937a-11ea-99b8-0637f2188f38.png)  | ![](https://user-images.githubusercontent.com/8895134/81540896-01485700-937b-11ea-85cc-5d59b8ef6f2b.png)
+![](https://user-images.githubusercontent.com/8895134/81540905-03aab100-937b-11ea-9ce8-23377fe05055.png)  | ![](https://user-images.githubusercontent.com/8895134/81540883-fd1c3980-937a-11ea-89d8-8d034bb56454.png)
+
+Successful Transaction
+:-------------------------:|:-------------------------:
+![](https://user-images.githubusercontent.com/8895134/81540896-01485700-937b-11ea-85cc-5d59b8ef6f2b.png)  |
 
 
 ## Getting Started
@@ -55,6 +59,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Authors
 
  **Jack Kiarie** - [Other Works](https://github.com/Jackwitwicky)
+
  **Zephaniah Sefu** - [Other Works](https://github.com/SefuZeph)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
