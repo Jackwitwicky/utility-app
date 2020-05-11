@@ -3,6 +3,7 @@ package com.gizahackathon.utilitiesapp.ui.home
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -63,6 +64,9 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener,
 
         //populate the recycler view
         homeViewModel.allUtilityAccounts.observe(this, Observer {
+            if (it.size > 0) {
+                no_bills_present.visibility = View.INVISIBLE
+            }
             homeListAdapter.submitList(it)
         })
     }
@@ -106,7 +110,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.ItemSelectionListener,
             Timber.d("Confirm payment")
             var hoverIntent = HoverParameters.Builder(this)
                 .request("02dc81bc")
-                .extra("PhoneNumber", phoneNumber)
+                .extra("PhoneNumber", "0$phoneNumber")
                 .extra("Amount", amount)
                 .buildIntent()
             startActivityForResult(hoverIntent, PAY_UTILITY_REQUEST_CODE)

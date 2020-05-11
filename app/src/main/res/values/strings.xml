@@ -48,7 +48,7 @@
 
     <!--    Transaction Status Dialog-->
     <string name="transaction_status_success_header">SUCCESS!</string>
-    <string name="transaction_status_success_message">You have successfully paid KSH %d to %s</string>
+    <string name="transaction_status_success_message">You have successfully completed your utility payment</string>
     <string name="transaction_status_fail_header">FAIL</string>
     <string name="transaction_status_fail_message">Payment of cash KSH %d to %s has failed</string>
     <string name="transaction_status_go_back">GO BACK</string>
