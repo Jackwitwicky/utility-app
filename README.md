@@ -13,9 +13,9 @@ Home Screen             |  Confirm Transaction
 :-------------------------:|:-------------------------:
 ![](https://user-images.githubusercontent.com/8895134/81540905-03aab100-937b-11ea-9ce8-23377fe05055.png)  | ![](https://user-images.githubusercontent.com/8895134/81540883-fd1c3980-937a-11ea-89d8-8d034bb56454.png)
 
-Successful Transaction
-:-------------------------:|:-------------------------:
-![](https://user-images.githubusercontent.com/8895134/81540896-01485700-937b-11ea-85cc-5d59b8ef6f2b.png)
+|                                          Successful Transaction                                          |    |
+|:--------------------------------------------------------------------------------------------------------:|:----|
+| ![](https://user-images.githubusercontent.com/8895134/81540896-01485700-937b-11ea-85cc-5d59b8ef6f2b.png) |  |
 
 
 ## Getting Started
