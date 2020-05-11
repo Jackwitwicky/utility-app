@@ -68,11 +68,9 @@ class HomeAdapter(private val itemSelectionListener: ItemSelectionListener) :
             binding.apply {
                 utilityBillItem = currentUtilityAccount
                 onClickListener = onSelectedListener
-                itemBillName.text = itemView.context.resources.getString(
-                    R.string.person_details,
-                    currentUtilityAccount!!.accountName,
-                    currentUtilityAccount.phoneNumber.toString()
-                )
+                itemBillName.text = currentUtilityAccount!!.accountName
+                itemPhoneNumber.text = currentUtilityAccount.phoneNumber.toString()
+
                 itemBillPrice.text = itemView.context.resources.getString(
                     R.string.ksh_value_holder,
                     currentUtilityAccount.amount.toInt()
